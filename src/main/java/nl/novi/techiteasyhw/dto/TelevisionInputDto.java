@@ -38,6 +38,10 @@ public class TelevisionInputDto {
         this.sold = sold;
     }
 
+    public TelevisionInputDto() {
+
+    }
+
     public String getType() {
         return type;
     }
