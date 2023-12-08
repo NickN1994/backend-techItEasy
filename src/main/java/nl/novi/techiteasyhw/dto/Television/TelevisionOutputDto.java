@@ -1,4 +1,4 @@
-package nl.novi.techiteasyhw.dto;
+package nl.novi.techiteasyhw.dto.Television;
 
 public class TelevisionOutputDto {
 
