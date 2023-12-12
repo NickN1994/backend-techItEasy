@@ -36,7 +36,7 @@ public class Television {
     private CiModule ciModule;
 
     @ManyToMany (fetch = FetchType.EAGER)
-    @JoinTable ((name = "televisions_WallBrackets"),
+    @JoinTable (name = "televisions_wall_brackets",
     joinColumns = @JoinColumn(name = "wallbrackets_id"),
     inverseJoinColumns = @JoinColumn (name = "television_id"))
     private Set<WallBracket> wallBrackets = new HashSet<>();
