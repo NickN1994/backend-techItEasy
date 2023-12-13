@@ -3,6 +3,7 @@ package nl.novi.techiteasyhw.service;
 import nl.novi.techiteasyhw.dto.Television.TelevisionInputDto;
 import nl.novi.techiteasyhw.dto.Television.TelevisionOutputDto;
 import nl.novi.techiteasyhw.exceptions.ExceptionController;
+import nl.novi.techiteasyhw.exceptions.RecordNotFoundException;
 import nl.novi.techiteasyhw.model.Television;
 import nl.novi.techiteasyhw.repository.TelevisionRepository;
 import org.springframework.stereotype.Service;
@@ -92,8 +93,12 @@ public class TelevisionService {
             Television tv = televisionOptional.get();
             return transferToDto(tv);
         } else {
-            throw new ExceptionController ("geen televisie gevonden");
+            throw new RecordNotFoundException ("geen televisie gevonden");
         }
+
+    }
+
+    public void assignRemoteControllerToTelevision (Long id, Long remoteControllerId) {
 
     }
 
