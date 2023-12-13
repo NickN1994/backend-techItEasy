@@ -2,11 +2,11 @@ package nl.novi.techiteasyhw.service;
 
 import nl.novi.techiteasyhw.dto.Television.TelevisionInputDto;
 import nl.novi.techiteasyhw.dto.Television.TelevisionOutputDto;
-import nl.novi.techiteasyhw.exceptions.ExceptionController;
 import nl.novi.techiteasyhw.exceptions.RecordNotFoundException;
 import nl.novi.techiteasyhw.model.Television;
 import nl.novi.techiteasyhw.repository.TelevisionRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -98,8 +98,37 @@ public class TelevisionService {
 
     }
 
+    public void deleteTelevision(@RequestBody Long id) {
+
+        repos.deleteById(id);
+
+    }
+
+    public TelevisionOutputDto updateTelevision(Long id, TelevisionInputDto inputDto) {
+
+        if (repos.findById(id).isPresent()){
+
+            Television tv = repos.findById(id).get();
+
+            Television tv1 = transferToTelevision(inputDto);
+            tv1.setId(tv.getId());
+
+            repos.save(tv1);
+
+            return transferToDto(tv1);
+
+        } else {
+
+            throw new  RecordNotFoundException("geen televisie gevonden");
+
+        }
+
+    }
+
     public void assignRemoteControllerToTelevision (Long id, Long remoteControllerId) {
 
     }
+
+
 
 }

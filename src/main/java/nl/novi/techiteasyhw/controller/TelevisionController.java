@@ -1,5 +1,6 @@
 package nl.novi.techiteasyhw.controller;
 
+import jakarta.validation.Valid;
 import nl.novi.techiteasyhw.dto.Television.TelevisionInputDto;
 import nl.novi.techiteasyhw.dto.Television.TelevisionOutputDto;
 import nl.novi.techiteasyhw.model.Television;
@@ -41,5 +42,24 @@ public class TelevisionController {
 
         return ResponseEntity.ok().body(television);
     }
+
+    @DeleteMapping("/televisions/{id}")
+    public ResponseEntity<Object> deleteTelevision(@PathVariable Long id) {
+
+        televisionService.deleteTelevision(id);
+
+        return ResponseEntity.noContent().build();
+
+    }
+
+    @PutMapping("/televisions/{id}")
+    public ResponseEntity<Object> updateTelevision(@PathVariable Long id, @Valid @RequestBody TelevisionInputDto newTelevision) {
+
+        TelevisionOutputDto dto = televisionService.updateTelevision(id, newTelevision);
+
+        return ResponseEntity.ok().body(dto);
+    }
+
+
 
 }
