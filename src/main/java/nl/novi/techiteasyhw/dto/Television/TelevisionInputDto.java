@@ -1,4 +1,4 @@
-package nl.novi.techiteasyhw.dto;
+package nl.novi.techiteasyhw.dto.Television;
 
 public class TelevisionInputDto {
 
@@ -36,6 +36,10 @@ public class TelevisionInputDto {
         this.ambiLight = ambiLight;
         this.originalStock = originalStock;
         this.sold = sold;
+    }
+
+    public TelevisionInputDto() {
+
     }
 
     public String getType() {
