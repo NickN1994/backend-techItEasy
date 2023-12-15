@@ -14,17 +14,17 @@ public class WallBracket {
 
     private Long id;
     private String size;
-    private boolean ajustable;
+    private boolean adjustable;
     private String name;
     private double price;
 
     @ManyToMany (mappedBy = "wallBrackets")
     private Set<Television> televisions = new HashSet<>();
 
-    public WallBracket(Long id, String size, boolean ajustable, String name, double price) {
+    public WallBracket(Long id, String size, boolean adjustable, String name, double price) {
         this.id = id;
         this.size = size;
-        this.ajustable = ajustable;
+        this.adjustable = adjustable;
         this.name = name;
         this.price = price;
     }
@@ -49,12 +49,12 @@ public class WallBracket {
         this.size = size;
     }
 
-    public boolean isAjustable() {
-        return ajustable;
+    public boolean isAdjustable() {
+        return adjustable;
     }
 
-    public void setAjustable(boolean ajustable) {
-        this.ajustable = ajustable;
+    public void setAdjustable(boolean adjustable) {
+        this.adjustable = adjustable;
     }
 
     public String getName() {

@@ -8,19 +8,19 @@ public class RemoteController {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     private String compatibleWith;
     private String batteryType;
     private String name;
     private String brand;
-    private double price;
+    private Double price;
 
     private int originalStock;
 
     @OneToOne (mappedBy = "remoteController")
     private Television television;
 
-    public RemoteController(long id, String compatibleWith, String batteryType, String name, String brand, double price, int originalStock) {
+    public RemoteController(long id, String compatibleWith, String batteryType, String name, String brand, Double price, int originalStock) {
         this.id = id;
         this.compatibleWith = compatibleWith;
         this.batteryType = batteryType;
@@ -37,7 +37,7 @@ public class RemoteController {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -77,7 +77,7 @@ public class RemoteController {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -23,15 +24,15 @@ public class CiModuleService {
     }
 
 
-    public CiModuleInputDto addCiModule (CiModuleInputDto dto) {
-        CiModuleInputDto ciModule = transferToCiModule(dto);
+    public CiModuleOutputDto addCiModule (CiModuleInputDto dto) {
+        CiModule ciModule = transferToCiModule(dto);
         repos.save(ciModule);
         return transferToDto(ciModule);
     }
 
 
-    private CiModuleInputDto transferToCiModule(CiModuleInputDto dto) {
-        CiModuleInputDto ciModule = new CiModuleInputDto();
+    private CiModule transferToCiModule(CiModuleInputDto dto) {
+        CiModule ciModule = new CiModule();
         ciModule.setName(dto.getName());
         ciModule.setType(dto.getType());
         ciModule.setPrice(dto.getPrice());
@@ -39,18 +40,8 @@ public class CiModuleService {
         return ciModule;
     }
 
-    private CiModuleInputDto transferToDto(CiModuleInputDto ciModule) {
-        CiModuleInputDto dto = new CiModuleInputDto();
-        dto.setName(ciModule.getName());
-        dto.setType(ciModule.getType());
-        dto.setPrice(ciModule.getPrice());
-        return dto;
-    }
-
-    // hier heb ik een deze methode aangemaakt voor de output, omdat anders op regel 59 krijg ik de melding
-    // dat ik de parameter op regel 47 moet aanpassen naar CiModule ciModule ipv CiModuleOutputDto ciModule, waarom?
-    private CiModuleInputDto transferToOutputDto(CiModuleOutputDto ciModule) {
-        CiModuleInputDto dto = new CiModuleInputDto();
+    private CiModuleOutputDto transferToDto(CiModule ciModule) {
+        CiModuleOutputDto dto = new CiModuleOutputDto();
         dto.setName(ciModule.getName());
         dto.setType(ciModule.getType());
         dto.setPrice(ciModule.getPrice());
@@ -62,7 +53,7 @@ public class CiModuleService {
         List<CiModuleOutputDto> ciModuleOutputDtoList = new ArrayList<>();
 
         for (CiModule ciModule : CiModulenList) {
-            CiModuleOutputDto dto = transferToOutputDto(ciModule); //waarom kan ik hier niet ciModule meegeven?
+            CiModuleOutputDto dto = transferToDto(ciModule); //waarom kan ik hier niet ciModule meegeven?
             ciModuleOutputDtoList.add(dto);
 
         }
@@ -87,13 +78,23 @@ public class CiModuleService {
 
 
     public CiModuleOutputDto updateCiModule(Long id, CiModuleInputDto ciModuleInputDto) {
-        if (repos.findById(id).isPresent()) {
-            CiModule ciModule = repos.findById(id).get();
-            CiModuleInputDto ciModule1 = transferToDto(ciModuleInputDto);
-            repos.save(ciModule1);
+        Optional<CiModule> ciModule = repos.findById(id);
+        if (ciModule.isPresent()) {
+            CiModule ciModule1 = ciModule.get();
+            if (ciModuleInputDto.getName() != null ) {
+                ciModule1.setName(ciModuleInputDto.getName());
+            }
+            if (ciModuleInputDto.getType() != null ) {
+                ciModule1.setType(ciModuleInputDto.getType());
+            }
+            if (ciModuleInputDto.getPrice() != null ) {
+                ciModule1.setPrice(ciModuleInputDto.getPrice());
+            }
+            CiModule updatedCiModule = repos.save(ciModule1);
+            return transferToDto(updatedCiModule);
+        } else {
+            throw new RecordNotFoundException("geen cimodule gevonden");
+        }
 
-        } else  {
-            throw new RecordNotFoundException("Geen ci module gevonden");
-        } return null;
     }
 }

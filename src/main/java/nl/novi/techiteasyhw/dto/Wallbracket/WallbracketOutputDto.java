@@ -6,7 +6,7 @@ public class WallbracketOutputDto {
     private String size;
     private boolean ajustable;
     private String name;
-    private double price;
+    private Double price;
 
     public WallbracketOutputDto(Long id, String size, boolean ajustable, String name, double price) {
         this.id = id;
@@ -56,7 +56,7 @@ public class WallbracketOutputDto {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

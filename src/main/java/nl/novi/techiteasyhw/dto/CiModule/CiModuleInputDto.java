@@ -2,12 +2,12 @@ package nl.novi.techiteasyhw.dto.CiModule;
 
 public class CiModuleInputDto {
 
-    private long id;
+    private Long id;
     private String name;
     private String type;
-    private double price;
+    private Double price;
 
-    public CiModuleInputDto(String name, String type, double price) {
+    public CiModuleInputDto(String name, String type, Double price) {
         this.name = name;
         this.type = type;
         this.price = price;
@@ -41,7 +41,7 @@ public class CiModuleInputDto {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 }

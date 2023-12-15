@@ -2,16 +2,16 @@ package nl.novi.techiteasyhw.dto.RemoteController;
 
 public class RemoteControllerInputDto {
 
-    private long id;
+    private Long id;
     private String compatibleWith;
     private String batteryType;
     private String name;
     private String brand;
-    private double price;
+    private Double price;
 
     private int originalStock;
 
-    public RemoteControllerInputDto(String compatibleWith, String batteryType, String name, String brand, double price, int originalStock) {
+    public RemoteControllerInputDto(String compatibleWith, String batteryType, String name, String brand, Double price, int originalStock) {
 
         this.compatibleWith = compatibleWith;
         this.batteryType = batteryType;
@@ -62,7 +62,7 @@ public class RemoteControllerInputDto {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

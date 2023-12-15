@@ -10,16 +10,16 @@ import java.util.Set;
 public class CiModule {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     private String name;
     private String type;
-    private double price;
+    private Double price;
 
     @OneToMany (mappedBy = "ciModule")
     private Set<Television> televisions = new HashSet<>();
 
 
-    public CiModule(long id, String name, String type, double price) {
+    public CiModule(long id, String name, String type, Double price) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -54,7 +54,7 @@ public class CiModule {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 }

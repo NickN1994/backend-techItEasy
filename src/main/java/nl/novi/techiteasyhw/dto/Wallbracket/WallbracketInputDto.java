@@ -4,13 +4,14 @@ public class WallbracketInputDto {
 
     private Long id;
     private String size;
-    private boolean ajustable;
+    private Boolean adjustable;
     private String name;
-    private double price;
+
+    private Double price;
 
     public WallbracketInputDto(String size, boolean ajustable, String name, double price) {
         this.size = size;
-        this.ajustable = ajustable;
+        this.adjustable = ajustable;
         this.name = name;
         this.price = price;
     }
@@ -27,12 +28,12 @@ public class WallbracketInputDto {
         this.size = size;
     }
 
-    public boolean isAjustable() {
-        return ajustable;
+    public Boolean isAdjustable() {
+        return adjustable;
     }
 
-    public void setAjustable(boolean ajustable) {
-        this.ajustable = ajustable;
+    public void setAdjustable(boolean adjustable) {
+        this.adjustable = adjustable;
     }
 
     public String getName() {
@@ -43,7 +44,7 @@ public class WallbracketInputDto {
         this.name = name;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 

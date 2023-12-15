@@ -22,8 +22,8 @@ public class CiModuleController {
     }
 
     @PostMapping("/addcimodule")
-    public ResponseEntity <CiModuleInputDto> addCiModule (@RequestBody CiModuleInputDto ciModuleInputDto) {
-        CiModuleInputDto dto = ciModuleService.addCiModule(ciModuleInputDto);
+    public ResponseEntity <CiModuleOutputDto> addCiModule (@RequestBody CiModuleInputDto ciModuleInputDto) {
+        CiModuleOutputDto dto = ciModuleService.addCiModule(ciModuleInputDto);
         return ResponseEntity.created(null).body(dto);
     }
 
