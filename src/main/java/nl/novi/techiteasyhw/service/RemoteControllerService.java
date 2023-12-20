@@ -5,7 +5,8 @@ import nl.novi.techiteasyhw.dto.RemoteController.RemoteControllerInputDto;
 import nl.novi.techiteasyhw.dto.RemoteController.RemoteControllerOutputDto;
 import nl.novi.techiteasyhw.exceptions.RecordNotFoundException;
 import nl.novi.techiteasyhw.model.RemoteController;
-import nl.novi.techiteasyhw.repository.RemoteContollerRepository;
+
+import nl.novi.techiteasyhw.repository.RemoteControllerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,10 +16,10 @@ import java.util.Optional;
 @Service
 public class RemoteControllerService {
 
-    private final RemoteContollerRepository repos;
+    private final RemoteControllerRepository repos;
 
 
-    public RemoteControllerService(RemoteContollerRepository repos) {
+    public RemoteControllerService(RemoteControllerRepository repos) {
         this.repos = repos;
     }
 

@@ -29,6 +29,30 @@ public class Television {
     private Integer originalStock;
     private Integer sold;
 
+    public RemoteController getRemoteController() {
+        return remoteController;
+    }
+
+    public void setRemoteController(RemoteController remoteController) {
+        this.remoteController = remoteController;
+    }
+
+    public CiModule getCiModule() {
+        return ciModule;
+    }
+
+    public void setCiModule(CiModule ciModule) {
+        this.ciModule = ciModule;
+    }
+
+    public Set<WallBracket> getWallBrackets() {
+        return wallBrackets;
+    }
+
+    public void setWallBrackets(Set<WallBracket> wallBrackets) {
+        this.wallBrackets = wallBrackets;
+    }
+
     @OneToOne
     private RemoteController remoteController;
 
@@ -201,3 +225,5 @@ public class Television {
         this.sold = sold;
     }
 }
+
+

@@ -21,6 +21,7 @@ public class TelevisionController {
         this.televisionService = televisionService;
     }
 
+
     @PostMapping("/addtv")
     public ResponseEntity<TelevisionOutputDto> addTelevision (@RequestBody TelevisionInputDto televisionInputDto) {
         TelevisionOutputDto dto = televisionService.addTelevision(televisionInputDto);
@@ -58,6 +59,18 @@ public class TelevisionController {
         TelevisionOutputDto dto = televisionService.updateTelevision(id, newTelevision);
 
         return ResponseEntity.ok().body(dto);
+    }
+
+    @PutMapping("/television/{id}/{remoteControllerId}")
+    public ResponseEntity<Object> assignRemoteControllerToTelevision (@PathVariable("id") Long id, @PathVariable ("remoteControllerId") Long remoteControllerId) {
+        televisionService.assignRemoteControllerToTelevision(id, remoteControllerId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/television/{id}/{ciModuleId}")
+    public ResponseEntity<Object> assignCIModuleToTelevision(@PathVariable ("id") Long id, @PathVariable ("ciModuleId") Long ciModuleId) {
+        televisionService.assignCIModuleToTelevision(id, ciModuleId);
+        return ResponseEntity.noContent().build();
     }
 
 

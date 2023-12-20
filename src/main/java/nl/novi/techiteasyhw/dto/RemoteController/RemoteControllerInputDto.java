@@ -58,7 +58,7 @@ public class RemoteControllerInputDto {
         this.brand = brand;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
@@ -66,7 +66,7 @@ public class RemoteControllerInputDto {
         this.price = price;
     }
 
-    public int getOriginalStock() {
+    public Integer getOriginalStock() {
         return originalStock;
     }
 

@@ -37,7 +37,7 @@ public class CiModuleInputDto {
         this.type = type;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 

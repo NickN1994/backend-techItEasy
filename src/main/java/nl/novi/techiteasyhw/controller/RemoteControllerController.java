@@ -3,15 +3,12 @@ package nl.novi.techiteasyhw.controller;
 import jakarta.validation.Valid;
 import nl.novi.techiteasyhw.dto.RemoteController.RemoteControllerInputDto;
 import nl.novi.techiteasyhw.dto.RemoteController.RemoteControllerOutputDto;
-import nl.novi.techiteasyhw.dto.Television.TelevisionOutputDto;
-import nl.novi.techiteasyhw.dto.Wallbracket.WallbracketInputDto;
-import nl.novi.techiteasyhw.model.RemoteController;
 import nl.novi.techiteasyhw.service.RemoteControllerService;
+import nl.novi.techiteasyhw.service.TelevisionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping
@@ -20,8 +17,10 @@ public class RemoteControllerController {
     private final RemoteControllerService remoteControllerService;
 
 
+
     public RemoteControllerController(RemoteControllerService remoteControllerService) {
         this.remoteControllerService = remoteControllerService;
+
     }
 
     @PostMapping ("/addremotecontroller")
