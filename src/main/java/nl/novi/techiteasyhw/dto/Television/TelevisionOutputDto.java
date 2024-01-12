@@ -2,6 +2,8 @@ package nl.novi.techiteasyhw.dto.Television;
 
 public class TelevisionOutputDto {
 
+    private Long id;
+
     private String type;
     private String brand;
     private String name;
@@ -19,7 +21,8 @@ public class TelevisionOutputDto {
     private Integer originalStock;
     private Integer sold;
 
-    public TelevisionOutputDto(String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold) {
+    public TelevisionOutputDto(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold) {
+        this.id = id;
         this.type = type;
         this.brand = brand;
         this.name = name;
@@ -40,6 +43,10 @@ public class TelevisionOutputDto {
 
     public TelevisionOutputDto() {
 
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getType() {
