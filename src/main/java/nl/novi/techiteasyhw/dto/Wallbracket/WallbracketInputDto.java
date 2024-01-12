@@ -9,9 +9,9 @@ public class WallbracketInputDto {
 
     private Double price;
 
-    public WallbracketInputDto(String size, boolean ajustable, String name, double price) {
+    public WallbracketInputDto(String size, boolean adjustable, String name, double price) {
         this.size = size;
-        this.adjustable = ajustable;
+        this.adjustable = adjustable;
         this.name = name;
         this.price = price;
     }

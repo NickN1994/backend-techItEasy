@@ -2,8 +2,11 @@ package nl.novi.techiteasyhw.service;
 
 import nl.novi.techiteasyhw.dto.Television.TelevisionOutputDto;
 import nl.novi.techiteasyhw.dto.Wallbracket.WallbracketOutputDto;
+import nl.novi.techiteasyhw.exceptions.RecordNotFoundException;
 import nl.novi.techiteasyhw.model.Television;
 import nl.novi.techiteasyhw.model.TelevisionWallBracket;
+import nl.novi.techiteasyhw.model.TelevisionWallBracketKey;
+import nl.novi.techiteasyhw.model.WallBracket;
 import nl.novi.techiteasyhw.repository.TelevisionRepository;
 import nl.novi.techiteasyhw.repository.TelevisionWallBracketRepository;
 import nl.novi.techiteasyhw.repository.WallBracketRepository;
@@ -66,12 +69,13 @@ public class TelevisionWallBracketService {
         List<TelevisionWallBracket> televisionWallbrackets = televisionWallBracketRepository.findAllByTelevisionId(televisionId);
         for (TelevisionWallBracket televisionWallbracket : televisionWallbrackets) {
             WallBracket wallBracket = televisionWallbracket.getWallBracket();
-            var dto = new WallBracketDto();
+            var dto = new WallbracketOutputDto();
 
             dto.setId(wallBracket.getId());
             dto.setName(wallBracket.getName());
             dto.setSize(wallBracket.getSize());
-            dto.setAdjustable(wallBracket.getAdjustable());
+
+            dto.setAdjustable(wallBracket.isAdjustable());
             dto.setPrice(wallBracket.getPrice());
 
             dtos.add(dto);

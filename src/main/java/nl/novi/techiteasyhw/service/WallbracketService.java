@@ -43,7 +43,7 @@ public class WallbracketService {
         dto.setName(wallBracket.getName());
         dto.setPrice(wallBracket.getPrice());
         dto.setSize(wallBracket.getSize());
-        dto.setAjustable(wallBracket.isAdjustable());
+        dto.setAdjustable(wallBracket.isAdjustable());
 
         return dto;
     }

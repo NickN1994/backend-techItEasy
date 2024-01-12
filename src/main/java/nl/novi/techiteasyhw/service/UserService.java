@@ -1,9 +1,12 @@
 package nl.novi.techiteasyhw.service;
 
+import nl.novi.techiteasyhw.Utils.RandomStringGenerator;
 import nl.novi.techiteasyhw.dto.Users.UserDto;
+import nl.novi.techiteasyhw.exceptions.RecordNotFoundException;
 import nl.novi.techiteasyhw.model.Authority;
 import nl.novi.techiteasyhw.repository.UserRepository;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -37,7 +40,7 @@ public class UserService {
         if (user.isPresent()){
             dto = fromUser(user.get());
         }else {
-            throw new /*TODO exception*/(username);
+            throw new UsernameNotFoundException(username);
         }
         return dto;
     }
@@ -58,14 +61,14 @@ public class UserService {
     }
 
     public void updateUser(String username, UserDto newUser) {
-        if (!userRepository.existsById(username)) throw new /*TODO exception*/();
+        if (!userRepository.existsById(username)) throw new RecordNotFoundException();
         User user = userRepository.findById(username).get();
         user.setPassword(newUser.getPassword());
         userRepository.save(user);
     }
 
     public Set<Authority> getAuthorities(String username) {
-        if (!userRepository.existsById(username)) throw new /*TODO exception*/(username);
+        if (!userRepository.existsById(username)) throw new UsernameNotFoundException((username);
         User user = userRepository.findById(username).get();
         UserDto userDto = fromUser(user);
         return userDto.getAuthorities();
@@ -73,14 +76,14 @@ public class UserService {
 
     public void addAuthority(String username, String authority) {
 
-        if (!userRepository.existsById(username)) throw new /*TODO exception*/(username);
+        if (!userRepository.existsById(username)) throw new UsernameNotFoundException((username);
         User user = userRepository.findById(username).get();
         user.addAuthority(new Authority(username, authority));
         userRepository.save(user);
     }
 
     public void removeAuthority(String username, String authority) {
-        if (!userRepository.existsById(username)) throw new /*TODO exception*/(username);
+        if (!userRepository.existsById(username)) throw new UsernameNotFoundException((username);
         User user = userRepository.findById(username).get();
         Authority authorityToRemove = user.getAuthorities().stream().filter((a) -> a.getAuthority().equalsIgnoreCase(authority)).findAny().get();
         user.removeAuthority(authorityToRemove);

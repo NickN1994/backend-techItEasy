@@ -1,6 +1,7 @@
 package nl.novi.techiteasyhw.controller;
 
 import nl.novi.techiteasyhw.dto.Users.UserDto;
+import nl.novi.techiteasyhw.exceptions.BadRequestException;
 import nl.novi.techiteasyhw.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @RestController
