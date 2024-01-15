@@ -57,7 +57,7 @@ public class UserService {
     }
 
     public void deleteUser(String username) {
-        /*repo*/.deleteById(username);
+        userRepository.deleteById(username);
     }
 
     public void updateUser(String username, UserDto newUser) {
@@ -68,7 +68,7 @@ public class UserService {
     }
 
     public Set<Authority> getAuthorities(String username) {
-        if (!userRepository.existsById(username)) throw new UsernameNotFoundException((username);
+        if (!userRepository.existsById(username)) throw new UsernameNotFoundException(username);
         User user = userRepository.findById(username).get();
         UserDto userDto = fromUser(user);
         return userDto.getAuthorities();
@@ -109,7 +109,7 @@ public class UserService {
         var user = new User();
 
         user.setUsername(userDto.getUsername());
-        user.setPassword(/*TODO encrypted password*/);
+        user.setPassword(userDto.getPassword());
         user.setEnabled(userDto.getEnabled());
         user.setApikey(userDto.getApikey());
         user.setEmail(userDto.getEmail());
