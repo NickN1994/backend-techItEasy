@@ -76,7 +76,7 @@ public class UserService {
 
     public void addAuthority(String username, String authority) {
 
-        if (!userRepository.existsById(username)) throw new UsernameNotFoundException((username);
+        if (!userRepository.existsById(username)) throw new UsernameNotFoundException((username));
         User user = userRepository.findById(username).get();
         user.addAuthority(new Authority(username, authority));
         userRepository.save(user);

@@ -63,7 +63,7 @@ public class TelevisionService {
     private TelevisionOutputDto transferToDto(Television television) {
         TelevisionOutputDto dto = new TelevisionOutputDto();
 
-//        dto.setId(television.getId());
+        dto.setId(television.getId());
         dto.setType(television.getType());
         dto.setBrand(television.getBrand());
         dto.setName(television.getName());

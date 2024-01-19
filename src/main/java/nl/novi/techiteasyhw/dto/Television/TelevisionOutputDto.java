@@ -49,6 +49,10 @@ public class TelevisionOutputDto {
         this.id = id;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getType() {
         return type;
     }
