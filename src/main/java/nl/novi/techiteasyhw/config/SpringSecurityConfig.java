@@ -66,8 +66,9 @@ private final JwtRequestFilter jwtRequestFilter;
 //                .requestMatchers("/**").permitAll()
 //                                        .requestMatchers(HttpMethod.POST, "/users").hasRole("ADMIN")
                                         .requestMatchers(HttpMethod.POST, "/users").permitAll()
-                                        .requestMatchers(HttpMethod.GET,"/users").hasRole("ADMIN")
-                                        .requestMatchers(HttpMethod.POST,"/users/**").hasRole("ADMIN")
+                                        .requestMatchers(HttpMethod.GET,"/users/users").hasRole("ADMIN")
+//                                        .requestMatchers(HttpMethod.GET,"/users/**").permitAll()
+                                        .requestMatchers(HttpMethod.PUT,"/users/**").hasRole("ADMIN")
                                         .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
 
                                         .requestMatchers(HttpMethod.POST, "/addcimodule").hasRole("ADMIN")
