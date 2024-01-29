@@ -1,8 +1,9 @@
 package nl.novi.techiteasyhw.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Television {
@@ -28,6 +29,42 @@ public class Television {
     private Integer originalStock;
     private Integer sold;
 
+    public RemoteController getRemoteController() {
+        return remoteController;
+    }
+
+    public void setRemoteController(RemoteController remoteController) {
+        this.remoteController = remoteController;
+    }
+
+    public CiModule getCiModule() {
+        return ciModule;
+    }
+
+    public void setCiModule(CiModule ciModule) {
+        this.ciModule = ciModule;
+    }
+
+    public Set<WallBracket> getWallBrackets() {
+        return wallBrackets;
+    }
+
+    public void setWallBrackets(Set<WallBracket> wallBrackets) {
+        this.wallBrackets = wallBrackets;
+    }
+
+    @OneToOne
+    private RemoteController remoteController;
+
+    @ManyToOne (fetch = FetchType.EAGER)
+    private CiModule ciModule;
+
+    @ManyToMany (fetch = FetchType.EAGER)
+    @JoinTable (name = "televisions_wall_brackets",
+    joinColumns = @JoinColumn(name = "wallbrackets_id"),
+    inverseJoinColumns = @JoinColumn (name = "television_id"))
+    private Set<WallBracket> wallBrackets = new HashSet<>();
+
     public Television(Long id, String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold) {
         this.id = id;
         this.type = type;
@@ -48,9 +85,11 @@ public class Television {
         this.sold = sold;
     }
 
-    public Television (){
+    public Television() {
 
     }
+
+
 
     public Long getId() {
         return id;
@@ -188,3 +227,5 @@ public class Television {
         this.sold = sold;
     }
 }
+
+
