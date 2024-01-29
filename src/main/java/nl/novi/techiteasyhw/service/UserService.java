@@ -1,12 +1,12 @@
 package nl.novi.techiteasyhw.service;
-
+import nl.novi.techiteasyhw.model.User;
 import nl.novi.techiteasyhw.Utils.RandomStringGenerator;
 import nl.novi.techiteasyhw.dto.Users.UserDto;
 import nl.novi.techiteasyhw.exceptions.RecordNotFoundException;
 import nl.novi.techiteasyhw.model.Authority;
 import nl.novi.techiteasyhw.repository.UserRepository;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,10 +20,13 @@ import static org.antlr.v4.runtime.tree.xpath.XPath.findAll;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
+
 
     public List<UserDto> getUsers() {
         List<UserDto> collection = new ArrayList<>();
@@ -60,10 +63,17 @@ public class UserService {
         userRepository.deleteById(username);
     }
 
+//    public void updateUser(String username, UserDto newUser) {
+//        if (!userRepository.existsById(username)) throw new RecordNotFoundException();
+//        User user = userRepository.findById(username).get();
+//        user.setPassword(PasswordEncoder.encode(newUser.getpassword));
+//        userRepository.save(user);
+//    }
+
     public void updateUser(String username, UserDto newUser) {
         if (!userRepository.existsById(username)) throw new RecordNotFoundException();
         User user = userRepository.findById(username).get();
-        user.setPassword(newUser.getPassword());
+        user.setPassword(passwordEncoder.encode(newUser.password));
         userRepository.save(user);
     }
 
@@ -83,7 +93,7 @@ public class UserService {
     }
 
     public void removeAuthority(String username, String authority) {
-        if (!userRepository.existsById(username)) throw new UsernameNotFoundException((username);
+        if (!userRepository.existsById(username)) throw new UsernameNotFoundException((username));
         User user = userRepository.findById(username).get();
         Authority authorityToRemove = user.getAuthorities().stream().filter((a) -> a.getAuthority().equalsIgnoreCase(authority)).findAny().get();
         user.removeAuthority(authorityToRemove);
@@ -109,7 +119,7 @@ public class UserService {
         var user = new User();
 
         user.setUsername(userDto.getUsername());
-        user.setPassword(userDto.getPassword());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.setEnabled(userDto.getEnabled());
         user.setApikey(userDto.getApikey());
         user.setEmail(userDto.getEmail());

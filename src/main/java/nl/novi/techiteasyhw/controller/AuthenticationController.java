@@ -2,6 +2,7 @@ package nl.novi.techiteasyhw.controller;
 
 import nl.novi.techiteasyhw.Utils.JwtUtil;
 import nl.novi.techiteasyhw.dto.Users.AuthenticationRequest;
+import nl.novi.techiteasyhw.dto.Users.AuthenticationResponse;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

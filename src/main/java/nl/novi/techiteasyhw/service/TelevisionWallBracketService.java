@@ -34,7 +34,7 @@ public class TelevisionWallBracketService {
 
     public Collection<TelevisionOutputDto> getTelevisionsByWallBracketId(Long wallBracketId) {
         Collection<TelevisionOutputDto> dtos = new HashSet<>();
-        Collection<TelevisionWallBracket> televisionWallbrackets = TelevisionWallBracketRepository.findAllByWallBracketId(wallBracketId);
+        Collection<TelevisionWallBracket> televisionWallbrackets = televisionWallBracketRepository.findAllByWallBracketId(wallBracketId);
         for (TelevisionWallBracket televisionWallbracket : televisionWallbrackets) {
             Television television = televisionWallbracket.getTelevision();
             TelevisionOutputDto televisionDto = new TelevisionOutputDto();

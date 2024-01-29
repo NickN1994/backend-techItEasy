@@ -3,10 +3,12 @@ package nl.novi.techiteasyhw.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-public class TelevisionWallBracketKey {
+
+public class TelevisionWallBracketKey implements Serializable {
 
     @Column(name = "television_id")
     private Long televisionId;

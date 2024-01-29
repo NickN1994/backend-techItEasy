@@ -11,6 +11,6 @@ public interface TelevisionWallBracketRepository extends JpaRepository<Televisio
     List<TelevisionWallBracket> findAllByTelevisionId(Long televisionId);
 
     // custom query om alle TelevisionWallBrackets te vinden die bij een bepaalde wallbracket horen
-    static List<TelevisionWallBracket> findAllByWallBracketId(Long wallBracketId);
+    List<TelevisionWallBracket> findAllByWallBracketId(Long wallBracketId);
 
 }

@@ -22,7 +22,7 @@ public class TelevisionController {
     }
 
 
-    @PostMapping("/addtv")
+    @PostMapping("/televisions")
     public ResponseEntity<TelevisionOutputDto> addTelevision (@RequestBody TelevisionInputDto televisionInputDto) {
         TelevisionOutputDto dto = televisionService.addTelevision(televisionInputDto);
         return ResponseEntity.created(null).body(dto);
@@ -54,7 +54,7 @@ public class TelevisionController {
     }
 
     @PutMapping("/televisions/{id}")
-    public ResponseEntity<Object> updateTelevision(@PathVariable Long id, @Valid @RequestBody TelevisionInputDto newTelevision) {
+    public ResponseEntity<TelevisionOutputDto> updateTelevision(@PathVariable Long id, @Valid @RequestBody TelevisionInputDto newTelevision) {
 
         TelevisionOutputDto dto = televisionService.updateTelevision(id, newTelevision);
 

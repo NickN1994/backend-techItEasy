@@ -23,7 +23,7 @@ public class UserController {
     }
 
 
-    @GetMapping(value = "")
+    @GetMapping(value = "/users")
     public ResponseEntity<List<UserDto>> getUsers() {
 
         List<UserDto> userDtos = userService.getUsers();
@@ -41,9 +41,9 @@ public class UserController {
 
     }
 
-    @PostMapping(value = "")
+    @PostMapping(value = "/users")
     public ResponseEntity<UserDto> createKlant(@RequestBody UserDto dto) {
-        ;
+
 
         String newUsername = userService.createUser(dto);
         userService.addAuthority(newUsername, "ROLE_USER");

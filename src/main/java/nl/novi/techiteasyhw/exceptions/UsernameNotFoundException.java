@@ -1,6 +1,6 @@
 package nl.novi.techiteasyhw.exceptions;
 
-public class UsernameNotFoundException {
+public class UsernameNotFoundException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 

@@ -35,7 +35,7 @@ private final JwtRequestFilter jwtRequestFilter;
     // PasswordEncoderBean. Deze kun je overal in je applicatie injecteren waar nodig.
     // Je kunt dit ook in een aparte configuratie klasse zetten.
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -64,7 +64,8 @@ private final JwtRequestFilter jwtRequestFilter;
                                 auth
                                         // Wanneer je deze uncomments, staat je hele security open. Je hebt dan alleen nog een jwt nodig.
 //                .requestMatchers("/**").permitAll()
-                                        .requestMatchers(HttpMethod.POST, "/users").hasRole("ADMIN")
+//                                        .requestMatchers(HttpMethod.POST, "/users").hasRole("ADMIN")
+                                        .requestMatchers(HttpMethod.POST, "/users").permitAll()
                                         .requestMatchers(HttpMethod.GET,"/users").hasRole("ADMIN")
                                         .requestMatchers(HttpMethod.POST,"/users/**").hasRole("ADMIN")
                                         .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
@@ -75,7 +76,7 @@ private final JwtRequestFilter jwtRequestFilter;
                                         .requestMatchers(HttpMethod.POST, "/addremotecontroller").hasRole("ADMIN")
                                         .requestMatchers(HttpMethod.GET, "/remotecontroller/**").hasRole("ADMIN")
 
-                                        .requestMatchers(HttpMethod.POST, "/addtv").hasRole("ADMIN")
+                                        .requestMatchers(HttpMethod.POST, "/televisions").hasRole("ADMIN")
                                         .requestMatchers(HttpMethod.GET, "/televisions/**").hasRole("ADMIN")
 
                                         .requestMatchers(HttpMethod.POST, "/addwallbracket").hasRole("ADMIN")

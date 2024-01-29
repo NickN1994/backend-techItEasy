@@ -1,6 +1,6 @@
 package nl.novi.techiteasyhw.dto.Users;
 
-public class AuthorityResponse {
+public class AuthenticationResponse {
 
     private final String jwt;
 
